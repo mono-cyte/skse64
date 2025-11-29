@@ -1264,7 +1264,7 @@ namespace favMenuDataHook
 			
 			// itemId to uniquely identify items
 			const char* name = CALL_MEMBER_FN(objDesc, GenerateName)();
-			SInt32 itemId = (SInt32)HashUtil::CRC32(name, objDesc->type->formID & 0x00FFFFFF);
+			SInt32 itemId = HashItemId(name, objDesc->type->formID);
 			RegisterNumber(dataContainer, "itemId", itemId);
 
 			for(InventoryPluginList::iterator iter = s_inventoryPlugins.begin(); iter != s_inventoryPlugins.end(); ++iter)
@@ -1295,7 +1295,7 @@ namespace favMenuDataHook
 				name = pFullName->name.data;
 			else
 				name = NULL;
-			SInt32 itemId = (SInt32)HashUtil::CRC32(name, form->formID & 0x00FFFFFF);
+			SInt32 itemId = HashItemId(name, form->formID);
 			RegisterNumber(dataContainer, "itemId", itemId);			
 		}
 	};

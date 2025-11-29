@@ -430,7 +430,7 @@ void InventoryEntryData::GetEquipItemData(EquipData& stateOut, SInt32 itemId, SI
 		{
 			if (displayName)
 			{
-				SInt32 xItemId = (SInt32) HashUtil::CRC32(displayName, type->formID & 0x00FFFFFF);
+				SInt32 xItemId = HashItemId(displayName, type->formID);
 				if (itemId == xItemId)
 				{
 					if (isWorn)
@@ -547,7 +547,7 @@ void ExtraContainerChanges::Data::GetEquipItemData(InventoryEntryData::EquipData
 	if (pFullName)
 	{
 		const char * name = pFullName->name.data;
-		SInt32 baseItemId = (SInt32)HashUtil::CRC32(name, item->formID & 0x00FFFFFF);
+		SInt32 baseItemId = HashItemId(name, item->formID);
 
 		if (baseItemId == itemId)
 			matchedBaseForm = true;
